@@ -17,13 +17,30 @@ const slides = [
 	}
 ]
 
+let i = 0; // Initialisation de l'index de l'image affichée
+const imageElement = document.getElementById("image_banner"); // Sélection de l'image
+const tagLineElement = document.getElementById("tagline"); // Sélection de la tagline
+
+
+// Fonction pour mettre à jour l'image et le texte du carrousel
+function updateCarousel() {
+	imageElement.src = slides[i].image; // Met à jour l'attribut 'src' de l'élément image
+	tagLineElement.innerHTML = slides[i].tagLine; // Met à jour le contenu HTML de l'élément tagline
+
+}
+
+// Initialisation du carrousel
+updateCarousel();
+
 //Evenement boutons
 let buttonLeft = document.querySelector(".arrow_left")
 buttonLeft.addEventListener("click", () => {
-	console.log("GAUCHE")
+	i = i - 1
+	updateCarousel() 
 });
 
 let buttonRight = document.querySelector(".arrow_right")
 buttonRight.addEventListener("click", () => {
-	console.log("DROITE")
+	i = i + 1
+	updateCarousel() 
 });
