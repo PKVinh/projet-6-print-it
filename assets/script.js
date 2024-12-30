@@ -21,7 +21,6 @@ let i = 0; // Initialisation de l'index de l'image affichée
 const imageElement = document.getElementById("image_banner"); // Sélection de l'image
 const tagLineElement = document.getElementById("tagline"); // Sélection de la tagline
 
-
 // Fonction pour mettre à jour l'image et le texte du carrousel
 function updateCarousel() {
 	imageElement.src = slides[i].image; // Met à jour l'attribut 'src' de l'élément image
@@ -35,12 +34,14 @@ updateCarousel();
 //Evenement boutons
 let buttonLeft = document.querySelector(".arrow_left")
 buttonLeft.addEventListener("click", () => {
-	i = i - 1
+	i = (i - 1 + slides.length) % slides.length; // Diminue l'index et i égal le reste de la division entre (i+3)/4 
 	updateCarousel() 
+	console.log(i)
 });
 
 let buttonRight = document.querySelector(".arrow_right")
 buttonRight.addEventListener("click", () => {
-	i = i + 1
+	i = (i + 1) % slides.length; // Augmente l'index et i égal le reste de la division entre (i+1)/4
 	updateCarousel() 
+	console.log(i)
 });
